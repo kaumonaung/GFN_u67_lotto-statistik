@@ -1,6 +1,8 @@
 import './css/styles.scss';
 import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
+
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,7 +19,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 
 function App() {
@@ -61,9 +64,15 @@ function App() {
     };
 
     for (let i = 0; i < DRAWS; i++) {
-      const winningNumbers = new Array(6)
-        .fill(0)
-        .map(() => Math.floor(Math.random() * 49) + 1);
+      let winningNumbers = [];
+
+      while (winningNumbers.length < 6) {
+        const randomNum = Math.floor(Math.random() * 49) + 1;
+
+        if (!winningNumbers.includes(randomNum)) {
+          winningNumbers.push(randomNum);
+        }
+      }
 
       const correctNumbers = winningNumbers.filter((num) =>
         selectedNumbers.includes(num)
@@ -177,17 +186,25 @@ function ChartView({ chartData, max }) {
           },
         },
       },
+      datalabels: {
+        display: true,
+        color: '#18181b',
+        font: {
+          size: 14,
+          weight: 500,
+        },
+      },
     },
   };
 
   const labels = [
-    'Zero Digits',
-    'One Digits',
-    'Two Digits',
-    'Three Digits',
-    'Four Digits',
-    'Five Digits',
-    'Six Digits',
+    'Zero Correct',
+    'One Correct',
+    'Two Correct',
+    'Three Correct',
+    'Four Correct',
+    'Five Correct',
+    'Six Correct',
   ];
 
   const data = {
