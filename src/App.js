@@ -1,5 +1,5 @@
 import './css/styles.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -75,6 +75,10 @@ function App() {
     setResults(results);
   };
 
+  useEffect(() => {
+    document.title = 'Ü67: Lottostatistik [»Kopfnuss«]';
+  }, []);
+
   return (
     <main className="container">
       <form onSubmit={handleSubmit}>
@@ -92,12 +96,15 @@ function App() {
 
         <div className="lotto-number-container">
           <h2>Pick Your Six Lottery Numbers for the Experiment</h2>
+
+          <p>{selectedNumbers.length} selected</p>
+
           <div className="num-pad-container">
             {new Array(49).fill(0).map((_, i) => (
               <button
                 key={i + 1}
                 onClick={(e) => handleClick(e)}
-                className="btn"
+                className="btn-num"
                 type="button"
                 style={{
                   backgroundColor: selectedNumbers.includes(i + 1) && '#fde68a',
@@ -150,7 +157,7 @@ function ChartView({ chartData, max }) {
       },
       title: {
         display: true,
-        text: `Lottery Statistics (${maxStr} draws)`,
+        text: `Lottery Statistics Number of Winners (${maxStr} Draws)`,
         color: '#18181b',
         padding: {
           top: 15,
@@ -174,13 +181,13 @@ function ChartView({ chartData, max }) {
   };
 
   const labels = [
-    '0 Correct',
-    '1 Correct',
-    '2 Correct',
-    '3 Correct',
-    '4 Correct',
-    '5 Correct',
-    '6 Correct',
+    'Zero Digits',
+    'One Digits',
+    'Two Digits',
+    'Three Digits',
+    'Four Digits',
+    'Five Digits',
+    'Six Digits',
   ];
 
   const data = {
@@ -188,15 +195,9 @@ function ChartView({ chartData, max }) {
     datasets: [
       {
         data: Object.values(chartData),
-        backgroundColor: [
-          'rgba(15, 23, 42, 1)',
-          'rgba(30, 41, 59, 1)',
-          'rgba(51, 65, 85, 1)',
-          'rgba(71, 85, 105, 1)',
-          'rgba(100, 116, 139, 1)',
-          'rgba(148, 163, 184, 1)',
-          'rgba(203, 213, 225, 1)',
-        ],
+        backgroundColor: ['rgba(57, 98, 174, 0.6)', 'rgba(111, 145, 208, 0.6)'],
+        borderColor: ['rgba(46, 78, 139, 1)', 'rgba(89, 116, 166, 1)'],
+        borderWidth: 1,
       },
     ],
   };

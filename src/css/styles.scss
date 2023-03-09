@@ -1,20 +1,15 @@
 $primary-color: #18181b;
-$primary-hover-dark: #27272a;
-$primary-hover-light: #f4f4f5;
+$primary-variant: #27272a;
 
-$secondary-hover-color: #fde68a;
+$secondary-color: #e5d8c0;
+$secondary-variant: #cec2ad;
 
-$white: #fff;
 $dark-gray: #18181b;
-$light-dark-gray: #52525b;
-$medium-gray: #d4d4d8;
+$medium-gray: #52525b;
 $light-gray: #e4e4e7;
-$white-gray: #f4f4f5;
+$white: white;
 
 $dark-green: #047857;
-
-$beige-color: #e5d8c0;
-$beige-color-daker: #cec2ad;
 
 body {
   margin: 0;
@@ -24,7 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: $beige-color;
+  background-color: $secondary-color;
 }
 
 .container {
@@ -51,7 +46,7 @@ body {
     margin: auto;
     padding: 1.5rem 1rem;
 
-    background-color: $beige-color-daker;
+    background-color: $secondary-variant;
     border-radius: 1rem;
 
     @media (min-width: 640px) {
@@ -80,6 +75,15 @@ body {
 
   .lotto-number-container {
     padding: 2rem 0;
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      color: $dark-green;
+      font-weight: 600;
+      text-align: center;
+      padding: 0 0 1rem 0;
+    }
 
     h2 {
       font-size: 1.875rem;
@@ -114,7 +118,7 @@ body {
     grid-template-columns: repeat(7, 1fr);
   }
 
-  .btn {
+  .btn-num {
     margin: 0 5px 5px 0;
     width: 60px;
     height: 60px;
@@ -124,7 +128,7 @@ body {
     text-align: center;
 
     background-color: $white;
-    color: $light-dark-gray;
+    color: $medium-gray;
 
     border: none;
     border-radius: 0.5rem;
@@ -132,8 +136,8 @@ body {
     filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
 
     &:hover {
-      background-color: $secondary-hover-color;
-      border: 1px solid $secondary-hover-color;
+      background-color: $light-gray;
+      border: 1px solid $light-gray;
     }
 
     &:disabled {
@@ -185,7 +189,7 @@ body {
     display: inline-block;
 
     &:hover {
-      background-color: $primary-hover-dark;
+      background-color: $primary-variant;
     }
 
     &:disabled {
@@ -206,7 +210,7 @@ body {
     font-weight: 600;
 
     &:hover {
-      background-color: $beige-color-daker;
+      background-color: $secondary-variant;
     }
   }
 }
