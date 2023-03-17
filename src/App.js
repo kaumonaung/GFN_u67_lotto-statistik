@@ -28,7 +28,7 @@ function App() {
   const [disableInput, setDisableInput] = useState(false);
   const [results, setResults] = useState({});
 
-  const DRAWS = 10000;
+  const DRAWS = 100000;
 
   const handleClick = (e) => {
     const clickedNum = parseInt(e.target.innerText);
