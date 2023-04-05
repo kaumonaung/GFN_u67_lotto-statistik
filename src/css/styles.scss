@@ -143,6 +143,7 @@ body {
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+
       &:hover {
         background-color: $white;
         border: 1px solid $light-gray;
